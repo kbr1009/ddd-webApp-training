@@ -1,0 +1,285 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp\\TESTWebApp.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp.Domain\\TESTWebApp.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp.Domain\\TESTWebApp.Domain.csproj",
+        "projectName": "TESTWebApp.Domain",
+        "projectPath": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp.Domain\\TESTWebApp.Domain.csproj",
+        "packagesPath": "C:\\Users\\81804\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\81804\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp.Infrastructure\\TESTWebApp.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp.Infrastructure\\TESTWebApp.Infrastructure.csproj",
+        "projectName": "TESTWebApp.Infrastructure",
+        "projectPath": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp.Infrastructure\\TESTWebApp.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\81804\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\81804\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp.Domain\\TESTWebApp.Domain.csproj": {
+                "projectPath": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp.Domain\\TESTWebApp.Domain.csproj"
+              },
+              "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp.UseCase\\TESTWebApp.UseCase.csproj": {
+                "projectPath": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp.UseCase\\TESTWebApp.UseCase.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp.UseCase\\TESTWebApp.UseCase.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp.UseCase\\TESTWebApp.UseCase.csproj",
+        "projectName": "TESTWebApp.UseCase",
+        "projectPath": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp.UseCase\\TESTWebApp.UseCase.csproj",
+        "packagesPath": "C:\\Users\\81804\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp.UseCase\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\81804\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp.Domain\\TESTWebApp.Domain.csproj": {
+                "projectPath": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp.Domain\\TESTWebApp.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp\\TESTWebApp.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp\\TESTWebApp.csproj",
+        "projectName": "TESTWebApp",
+        "projectPath": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp\\TESTWebApp.csproj",
+        "packagesPath": "C:\\Users\\81804\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\81804\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp.Domain\\TESTWebApp.Domain.csproj": {
+                "projectPath": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp.Domain\\TESTWebApp.Domain.csproj"
+              },
+              "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp.Infrastructure\\TESTWebApp.Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp.Infrastructure\\TESTWebApp.Infrastructure.csproj"
+              },
+              "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp.UseCase\\TESTWebApp.UseCase.csproj": {
+                "projectPath": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp.UseCase\\TESTWebApp.UseCase.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.18.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

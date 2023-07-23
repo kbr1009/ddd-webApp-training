@@ -1,0 +1,17 @@
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Infrastructure\bin\Debug\net6.0\TESTWebApp.Infrastructure.deps.json
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Infrastructure\bin\Debug\net6.0\TESTWebApp.Infrastructure.dll
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Infrastructure\bin\Debug\net6.0\TESTWebApp.Infrastructure.pdb
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Infrastructure\bin\Debug\net6.0\TESTWebApp.Domain.dll
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Infrastructure\bin\Debug\net6.0\TESTWebApp.UseCase.dll
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Infrastructure\bin\Debug\net6.0\TESTWebApp.Domain.pdb
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Infrastructure\bin\Debug\net6.0\TESTWebApp.UseCase.pdb
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Infrastructure\obj\Debug\net6.0\TESTWebApp.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Infrastructure\obj\Debug\net6.0\TESTWebApp.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Infrastructure\obj\Debug\net6.0\TESTWebApp.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Infrastructure\obj\Debug\net6.0\TESTWebApp.Infrastructure.AssemblyInfo.cs
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Infrastructure\obj\Debug\net6.0\TESTWebApp.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Infrastructure\obj\Debug\net6.0\TESTWebApp.Infrastructure.csproj.CopyComplete
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Infrastructure\obj\Debug\net6.0\TESTWebApp.Infrastructure.dll
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Infrastructure\obj\Debug\net6.0\refint\TESTWebApp.Infrastructure.dll
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Infrastructure\obj\Debug\net6.0\TESTWebApp.Infrastructure.pdb
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Infrastructure\obj\Debug\net6.0\ref\TESTWebApp.Infrastructure.dll

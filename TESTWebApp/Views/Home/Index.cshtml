@@ -1,0 +1,106 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model TESTWebApp.Models.WorkInputViewModel
+@using TESTWebApp.Domain.Models.WorkInputs;
+
+<div class="chuuou">
+    <div class="container body-content">
+        @{
+            if (Model.Work)
+            {
+                <br />
+                <div class="chuuou">
+                    <h3 style="font-size:200%;"><b class="flash3s" style="color:#32cd32">● </b><b>@Model.WodrkStatusMsg</b></h3>
+                </div>
+            }
+        }
+        <br />
+        <form asp-action="ExcecuteWork" method="POST">
+            <input id="workItemName" type="hidden" asp-for="InputWorkItem" />
+            <input id="workStatus" type="hidden" asp-for="InputWorkStatus" value="@Model.BeforeWorkStatus" />
+            <div class="chuuou">
+                <div id="selectWorkdiv" class="selectdiv">
+                    <label>
+                        @{
+                            if (Model.Work)
+                            {
+                                <select id="selsectWorkItem" asp-items="Model.WorkItemList">
+                                    <option hidden value="@Model.LatestWorkData.WorkItem">@Model.LatestWorkData.WorkItem</option>
+                                </select>
+                            }
+                            else
+                            {
+                                <select class="flash1s" id="selsectWorkItem" asp-items="Model.WorkItemList">
+                                    <option hidden value="hidden">作業項目を入力してください</option>
+                                </select>
+                            }
+                        }
+                    </label>
+                </div>
+            </div>
+            <br />
+            <div class="chuuou">
+                <p id="now" style="font-size:200%; font-weight:bold"></p>
+            </div>
+            <br />
+            <div>
+                <input type="hidden">
+            </div>
+
+            <div class="chuuou">
+                <div class="form_conf">
+                    <div class='btn-toolbar' role="toolbar">
+                        <div class="btn-group" role="group">
+                            <div class="d-grid gap-2">
+                                @{
+                                    if (Model.LatestWorkData is null)
+                                    {
+                                        <button id="workBtn" class="btn customGreenBtn" type="submit" name="CountUp">作業を開始する</button>
+                                    }
+                                    else
+                                    {
+                                        if (Model.LatestWorkData.Status == WorkStatus.Start)
+                                        {
+                                            <button id="workBtn" class="btn customRedBtn" type="submit" name="CountUp">作業を終了する</button>
+                                        }
+                                        if (Model.LatestWorkData.Status == WorkStatus.End)
+                                        {
+                                            <button id="workBtn" class="btn customGreenBtn" type="submit" name="CountUp">作業を開始する</button>
+                                        }
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <br />
+        <div class="chuuou">
+            <h3><b>[本日の作業履歴]</b></h3>
+        </div>
+        <br />
+        @{
+            foreach (var i in Model.WorkInputDatas.Reverse())
+            {
+                if (i.Status == WorkStatus.Start)
+                {
+                    var msg = $"{i.WorkItem}を開始しました {i.TimeStamp.ToString("HH:mm")}";
+                    <div class="chuuou">
+                        <h5><b style="color:#32cd32">■ </b><b>@msg</b></h5>
+                    </div>
+                    <br />
+                }
+                if (i.Status == WorkStatus.End)
+                {
+                    var msg = $"{i.WorkItem}を終了しました {i.TimeStamp.ToString("HH:mm")}";
+                    <div class="chuuou">
+                        <h5><b style="color:#ff0000">■ </b><b>@msg</b></h5>
+                    </div>
+                }
+            }
+        }
+        <br />
+    </div>
+</div>

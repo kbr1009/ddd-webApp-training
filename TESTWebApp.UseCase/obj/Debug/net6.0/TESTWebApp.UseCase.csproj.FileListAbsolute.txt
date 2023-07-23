@@ -1,0 +1,15 @@
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.UseCase\bin\Debug\net6.0\TESTWebApp.UseCase.deps.json
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.UseCase\bin\Debug\net6.0\TESTWebApp.UseCase.dll
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.UseCase\bin\Debug\net6.0\TESTWebApp.UseCase.pdb
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.UseCase\obj\Debug\net6.0\TESTWebApp.UseCase.csproj.AssemblyReference.cache
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.UseCase\obj\Debug\net6.0\TESTWebApp.UseCase.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.UseCase\obj\Debug\net6.0\TESTWebApp.UseCase.AssemblyInfoInputs.cache
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.UseCase\obj\Debug\net6.0\TESTWebApp.UseCase.AssemblyInfo.cs
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.UseCase\obj\Debug\net6.0\TESTWebApp.UseCase.csproj.CoreCompileInputs.cache
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.UseCase\obj\Debug\net6.0\TESTWebApp.UseCase.dll
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.UseCase\obj\Debug\net6.0\refint\TESTWebApp.UseCase.dll
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.UseCase\obj\Debug\net6.0\TESTWebApp.UseCase.pdb
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.UseCase\obj\Debug\net6.0\ref\TESTWebApp.UseCase.dll
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.UseCase\bin\Debug\net6.0\TESTWebApp.Domain.dll
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.UseCase\bin\Debug\net6.0\TESTWebApp.Domain.pdb
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.UseCase\obj\Debug\net6.0\TESTWebApp.UseCase.csproj.CopyComplete
