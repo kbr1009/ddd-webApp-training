@@ -1,0 +1,14 @@
+version: '3'
+services:
+  nginx:
+    build: ./nginx
+    image: 'my_nginx'
+    container_name: 'my_nginx'
+    ports:
+    - "80:80"
+  webapp:
+    build: ./TESTWebApp
+    image: 'TESTWebApp'
+    container_name: 'TESTWebApp'
+    ports:
+    - "5000:5000"

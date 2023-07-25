@@ -5,6 +5,10 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
+# 5000ポートで受け付けるように設定する
+##ENV ASPNETCORE_URLS http://+:5000
+#EXPOSE 5000
+
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["TESTWebApp/TESTWebApp.csproj", "TESTWebApp/"]
