@@ -1,78 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TESTWebApp.Infrastructure.Database.Tables;
+﻿using TESTWebApp.Infrastructure.Database.Tables;
 using TESTWebApp.Infrastructure.Database;
 using TESTWebApp.Domain.Models.WorkInputs;
+using TESTWebApp.Domain.Services.WorkInputs;
+using TESTWebApp.Domain.Models.Users;
 
 namespace TESTWebApp.Infrastructure.Repositories
 {
-    public class WorkInputRepository : IWorkInputRepository
+    public sealed class WorkInputRepository : IWorkInputRepository
     {
-        private readonly AppMoqDbContext _appDbContext;
+        private readonly AppDbContext _database;
 
-        public WorkInputRepository(AppMoqDbContext appDbContext)
+        public WorkInputRepository(AppDbContext database)
         {
-            this._appDbContext = appDbContext;
+            _database = database;
         }
-
-        public WorkInputRepository()
-        {
-            this._appDbContext = new AppMoqDbContext();
-        }
-
 
         public void RegistWorkInput(WorkInput workInput)
         {
-            try { _appDbContext.AddData(ToDataModel(workInput)); }
-            catch { throw new ArgumentException("error!: データの登録に失敗しました。"); }
+            _database.Add(ToDataModel(workInput));
+            _database.SaveChanges();
         }
 
-        public IEnumerable<WorkInput> FindAllToModel(DateTime date)
-        {
-            IEnumerable<WorkInputDataModel> todoDataModels = _appDbContext.Datas
-                .Where(x => x.TimeStamp.Date == date.Date);
-
-            if (!todoDataModels.Any())
-                return new List<WorkInput>();
-
-            return ToModels(todoDataModels);
-        }
-
-        public WorkInput FindById(string id)
-        {
-            WorkInputDataModel? workInput = _appDbContext.Datas
-                .FirstOrDefault(x => x.Id == id);
-            if (workInput is null)
-                throw new Exception($"error!: {id} の履歴がみつかりません。");
-            return ToModel(workInput);
-        }
-
-        private static IEnumerable<WorkInput> ToModels(IEnumerable<WorkInputDataModel> dataModels)
+        private static IEnumerable<WorkInput> ToModels(IEnumerable<WORKINPUT> dataModels)
         {
             foreach (var i in dataModels)
                 yield return ToModel(i);
         }
 
-        private static WorkInput ToModel(WorkInputDataModel dataModel)
+        private static WorkInput ToModel(WORKINPUT dataModel)
         {
             return new WorkInput(
                     id: new WorkInputId(dataModel.Id),
-                    userId: dataModel.UserId,
+                    userId: new UserId( dataModel.UserId),
                     workItem: dataModel.WorkItem,
                     status: (WorkStatus)dataModel.Status,
                     timeStamp: dataModel.TimeStamp,
                     isDeleted: dataModel.IsDeleted);
         }
 
-        private static WorkInputDataModel ToDataModel(WorkInput workInput)
+        private static WORKINPUT ToDataModel(WorkInput workInput)
         {
-            return new WorkInputDataModel()
+            return new WORKINPUT()
             {
                 Id = workInput.Id.Value,
-                UserId = workInput.UserId,
+                UserId = workInput.UserId.Value,
                 WorkItem = workInput.WorkItem,
                 Status = (int)workInput.Status,
                 TimeStamp = workInput.TimeStamp,

@@ -1,56 +1,80 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 using TESTWebApp.UseCase.WorkInputs.Queries;
 using TESTWebApp.Models;
-using TESTWebApp.UseCase.WorkInputs;
-using TESTWebApp.UseCase.WorkInputs.Commands;
+using TESTWebApp.UseCase.Users.Queries;
+using TESTWebApp.Services.Cookie.Models;
+using TESTWebApp.UseCase.WorkInputs.Commands.Create;
 
 namespace TESTWebApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
         private readonly IWorkInputDataQuery _workInputDataQuery;
-        private readonly IWorkInputUseCase _workInputUseCase;
+        private readonly IWorkInputCreateCommand _workInputCreateCommand;
+        private readonly IUserDataQuery _userDataQuery;
 
         public HomeController(
-            ILogger<HomeController> logger,
             IWorkInputDataQuery workInputDataQuery,
-            IWorkInputUseCase workInputUseCase
+            IWorkInputCreateCommand workInputCreateCommand,
+            IUserDataQuery userDataQuery
             )
         {
-            _logger = logger;
             _workInputDataQuery = workInputDataQuery;
-            _workInputUseCase = workInputUseCase;
+            _workInputCreateCommand = workInputCreateCommand;
+            _userDataQuery = userDataQuery;
         }
 
         public IActionResult Index()
         {
-            var viewModel = new WorkInputViewModel();
-            viewModel.WorkInputDatas = _workInputDataQuery.FindAllWorkInputData();
+            // ユーザのログイン情報があるか
+            string cookie = HttpContext.Request.Cookies[WebAuthCookieKey.ATTENDANCE_ID];
+
+            // セッションが無ければログイン画面にリダイレクトする
+            if (string.IsNullOrWhiteSpace(cookie))
+            {
+                return RedirectToAction("index", "UserLogin");
+            }
+
+            UserDataResponse searchUserData = _userDataQuery.FindUserById(cookie);
+            if (searchUserData is null)
+            {
+                // クッキーの削除
+                HttpContext.Response.Cookies.Delete(WebAuthCookieKey.ATTENDANCE_ID);
+                // ログイン画面へのリダイレクト
+                return RedirectToAction("index", "UserLogin");
+            }
+
+            WorkInputViewModel viewModel = new WorkInputViewModel();
+            viewModel.WorkInputDatas = _workInputDataQuery.FindAllWorkInputData(cookie);
+            viewModel.userData = searchUserData;
             return View(viewModel);
         }
 
         [HttpPost]
         public IActionResult ExcecuteWork(WorkInputViewModel workInputViewModel)
         {
+            string cookie = HttpContext.Request.Cookies[WebAuthCookieKey.ATTENDANCE_ID];
+            if (string.IsNullOrWhiteSpace(cookie))
+            {
+                return RedirectToAction("index", "UserLogin");
+            }
+
             var createWorkInputRequest = new CreateWorkInputRequest(
-                workInputViewModel.UserId,
+                cookie,
                 workInputViewModel.InputWorkItem,
                 workInputViewModel.InputWorkStatus
                 );
-            _workInputUseCase.Excecute(createWorkInputRequest);
+            _workInputCreateCommand.Excecute(createWorkInputRequest);
+
             return RedirectToAction("Index");
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult Logout()
         {
-            return View(
-                new ErrorViewModel 
-                { 
-                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier 
-                });
+            // クッキーの削除
+            HttpContext.Response.Cookies.Delete(WebAuthCookieKey.ATTENDANCE_ID);
+            // ログアウト画面への遷移
+            return RedirectToAction("index", "UserLogin");
         }
     }
 }

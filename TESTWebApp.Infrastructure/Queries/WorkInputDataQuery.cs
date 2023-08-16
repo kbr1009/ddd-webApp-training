@@ -1,61 +1,61 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TESTWebApp.Infrastructure.Database.Tables;
+﻿using TESTWebApp.Infrastructure.Database.Tables;
 using TESTWebApp.Infrastructure.Database;
 using TESTWebApp.UseCase.WorkInputs.Queries;
-using TESTWebApp.UseCase.WorkInputs.Data;
 
 namespace TESTWebApp.Infrastructure.Queries
 {
-    public class WorkInputDataQuery : IWorkInputDataQuery
+    public sealed class WorkInputDataQuery : IWorkInputDataQuery
     {
-        private readonly AppMoqDbContext _appDbContext;
+        private readonly AppDbContext _database;
 
-        public WorkInputDataQuery(AppMoqDbContext appDbContext)
+        public WorkInputDataQuery(AppDbContext database)
         {
-            this._appDbContext = appDbContext;
+            _database = database;
         }
 
-        public WorkInputDataQuery()
+        public IEnumerable<WorkInputDataResponse> FindAllWorkInputData(DateTime date)
         {
-            this._appDbContext = new AppMoqDbContext();
-        }
-
-
-        public IEnumerable<WorkInputData> FindAllWorkInputData(DateTime date)
-        {
-            IEnumerable<WorkInputDataModel> todoDataModels = _appDbContext.Datas
+            IEnumerable<WORKINPUT> todoDataModels = _database.WorkInputDataModels
                 .Where(x => x.TimeStamp.Date == date.Date);
 
             if (!todoDataModels.Any())
-                return new List<WorkInputData>();
+                return new List<WorkInputDataResponse>();
 
             return ToModels(todoDataModels);
         }
 
-        public IEnumerable<WorkInputData> FindAllWorkInputData()
+        public IEnumerable<WorkInputDataResponse> FindAllWorkInputData()
         {
-            IEnumerable<WorkInputDataModel> todoDataModels = _appDbContext.Datas
+            IEnumerable<WORKINPUT> todoDataModels = _database.WorkInputDataModels
                 .Where(x => x.TimeStamp.Date == DateTime.Now.Date);
 
             if (!todoDataModels.Any())
-                return new List<WorkInputData>();
+                return new List<WorkInputDataResponse>();
 
             return ToModels(todoDataModels);
         }
 
-        private static IEnumerable<WorkInputData> ToModels(IEnumerable<WorkInputDataModel> dataModels)
+        public IEnumerable<WorkInputDataResponse> FindAllWorkInputData(string userId)
+        {
+            IEnumerable<WORKINPUT> todoDataModels = _database.WorkInputDataModels
+                .Where(x => x.TimeStamp.Date == DateTime.Now.Date)
+                .Where(x => x.UserId == userId);
+
+            if (!todoDataModels.Any())
+                return new List<WorkInputDataResponse>();
+
+            return ToModels(todoDataModels);
+        }
+
+        private static IEnumerable<WorkInputDataResponse> ToModels(IEnumerable<WORKINPUT> dataModels)
         {
             foreach (var i in dataModels)
                 yield return ToModel(i);
         }
 
-        private static WorkInputData ToModel(WorkInputDataModel dataModel)
+        private static WorkInputDataResponse ToModel(WORKINPUT dataModel)
         {
-            return new WorkInputData()
+            return new WorkInputDataResponse()
             {
                 Id = dataModel.Id,
                 UserId = dataModel.UserId,

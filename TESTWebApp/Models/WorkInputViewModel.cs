@@ -1,21 +1,13 @@
-﻿using TESTWebApp.UseCase.WorkInputs.Data;
-using TESTWebApp.Domain.Models.WorkInputs;
+﻿using TESTWebApp.Domain.Models.WorkInputs;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.AspNetCore.Mvc;
+using TESTWebApp.UseCase.Users.Queries;
+using TESTWebApp.UseCase.WorkInputs.Queries;
 
 namespace TESTWebApp.Models
 {
     public class WorkInputViewModel
     {
-        private string _userId = "7df429c42e364674b2c3b65bd46b144a";
-        public string UserId 
-        {
-            get => _userId;
-            set 
-            { 
-                _userId = value;
-            } 
-        }
+        public UserDataResponse userData { get; set; }
 
         public bool Work 
         {
@@ -42,7 +34,7 @@ namespace TESTWebApp.Models
             }
         }
 
-        public WorkInputData? LatestWorkData
+        public WorkInputDataResponse? LatestWorkData
         {
             get
             {
@@ -59,7 +51,7 @@ namespace TESTWebApp.Models
             }
         }
 
-        public IEnumerable<WorkInputData> WorkInputDatas { get; set; }
+        public IEnumerable<WorkInputDataResponse> WorkInputDatas { get; set; }
 
         public IEnumerable<SelectListItem> WorkItemList { get; } = new List<SelectListItem>
         {

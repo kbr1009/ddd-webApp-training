@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TESTWebApp.Domain.Models.Users;
 
 namespace TESTWebApp.Domain.Models.WorkInputs
 {
-    public class WorkInput
+    public sealed class WorkInput
     {
         public WorkInputId Id { get; }
-        public string UserId { get; private set; }
+        public UserId UserId { get; private set; }
         public string WorkItem { get; private set; }
         public WorkStatus Status { get; private set; }
         public DateTime TimeStamp { get; private set; }
@@ -17,7 +18,7 @@ namespace TESTWebApp.Domain.Models.WorkInputs
 
         public WorkInput(
             WorkInputId id,
-            string userId,
+            UserId userId,
             string workItem,
             WorkStatus status,
             DateTime timeStamp,
@@ -32,7 +33,7 @@ namespace TESTWebApp.Domain.Models.WorkInputs
         }
 
         public static WorkInput CreateNew(
-            string userId,
+            UserId userId,
             string workItem,
             WorkStatus? workStatus
             )

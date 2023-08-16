@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace TESTWebApp.Domain.Models.Users
 {
-    public class User
+    public sealed class User
     {
         public UserId UserId { get; }
         public string UserName { get; private set; }
@@ -35,12 +29,12 @@ namespace TESTWebApp.Domain.Models.Users
             this.IsDeleted = isDeleted;
         }
 
-        public static User CreateNew(string UserName, UserId createdBy)
+        public static User CreateNew(string userName, UserId createdBy)
         {
             var timeStamp = DateTime.Now;
             return new User(
                 userId: UserId.Generate(),
-                UserName: UserName, 
+                UserName: userName, 
                 createdBy: createdBy,
                 modifiedBy: createdBy,
                 created: timeStamp,
@@ -48,9 +42,9 @@ namespace TESTWebApp.Domain.Models.Users
                 isDeleted: false);
         }
 
-        public void UpdateUserName(string UserName, UserId modifiedBy)
+        public void UpdateUserName(string userName, UserId modifiedBy)
         {
-            this.UserName = UserName;
+            this.UserName = userName;
             this.ModifiedBy = modifiedBy;
             this.Modified = DateTime.Now;
         }

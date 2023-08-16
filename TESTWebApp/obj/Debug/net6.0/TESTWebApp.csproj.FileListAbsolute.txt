@@ -47,3 +47,4 @@ C:\Users\81804\source\repos\TESTWebApp\TESTWebApp\bin\Debug\net6.0\TESTWebApp.In
 C:\Users\81804\source\repos\TESTWebApp\TESTWebApp\bin\Debug\net6.0\TESTWebApp.UseCase.pdb
 C:\Users\81804\source\repos\TESTWebApp\TESTWebApp\obj\Debug\net6.0\TESTWebApp.csproj.CopyComplete
 C:\Users\81804\source\repos\TESTWebApp\TESTWebApp\bin\Debug\net6.0\libman.json
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll

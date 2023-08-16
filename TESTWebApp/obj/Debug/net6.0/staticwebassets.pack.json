@@ -13,8 +13,16 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp\\wwwroot\\js\\home.js",
+      "PackagePath": "staticwebassets\\js\\home.js"
+    },
+    {
       "Id": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp\\wwwroot\\js\\userLogin.js",
+      "PackagePath": "staticwebassets\\js\\userLogin.js"
     },
     {
       "Id": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp\\wwwroot\\lib\\bootstrap\\LICENSE",

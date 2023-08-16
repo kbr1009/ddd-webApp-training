@@ -29,11 +29,27 @@
       },
       "js": {
         "Children": {
+          "home.js": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 0,
+              "SubPath": "js/home.js"
+            },
+            "Patterns": null
+          },
           "site.js": {
             "Children": null,
             "Asset": {
               "ContentRootIndex": 0,
               "SubPath": "js/site.js"
+            },
+            "Patterns": null
+          },
+          "userLogin.js": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 0,
+              "SubPath": "js/userLogin.js"
             },
             "Patterns": null
           }

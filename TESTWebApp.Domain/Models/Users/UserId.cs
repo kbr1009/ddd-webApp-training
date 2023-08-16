@@ -7,7 +7,7 @@ using TESTWebApp.Domain.Models.Shared;
 
 namespace TESTWebApp.Domain.Models.Users
 {
-    public class UserId : SingleValueObject<string>
+    public sealed class UserId : SingleValueObject<string>
     {
         public UserId(string value) : base(value) { }
 

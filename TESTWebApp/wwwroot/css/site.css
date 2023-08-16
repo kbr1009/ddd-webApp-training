@@ -70,6 +70,23 @@ select::-ms-expand {
     text-align: center;
 }
 
+.inputForm {
+    height: 50px;
+    width: 310px;
+    /*    margin: 10px 0px;
+    padding: 0px 15px;*/
+    font-size: 22px;
+    line-height: 1.75;
+    color: #333;
+    background-color: #ffffff;
+    background-image: none;
+    border: 2px solid #000000;
+    -ms-word-break: normal;
+    word-break: normal;
+    font-weight: bold;
+    text-align: center;
+}
+
 .customGreenBtn {
     color: azure;
     width: 11em;
@@ -96,6 +113,21 @@ select::-ms-expand {
     .customRedBtn:hover {
         color: floralwhite;
     }
+
+
+.customBulueBtn {
+    color: azure;
+    width: 12em;
+    height: 2em;
+    font-size: 180%;
+    font-weight: bold;
+    border-color: #0000FF;
+    background: #0000FF;
+}
+.customBulueBtn:hover{
+    color:floralwhite;
+}
+
 
 .flash3s {
     animation: flash 3s linear infinite;

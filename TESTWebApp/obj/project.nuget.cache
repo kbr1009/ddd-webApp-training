@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "69gwEJnV8wlp5O8GOLQgN1P80ifzMKF7ArVxgHpIdAysV0bgm8BZFtEsyG/YYcf/cnmPMJVvq1kIHCMaWdI9BA==",
+  "dgSpecHash": "4ZyE/xWGZWUS+og4r/xxE9J69MMNMWpV+49/GB6GBuImEcCfKVXcEL+ufIR2jbEZSBBTJlb4TdRtpAXGj57orQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp\\TESTWebApp.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\81804\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.9\\microsoft.entityframeworkcore.7.0.9.nupkg.sha512",
-    "C:\\Users\\81804\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.9\\microsoft.entityframeworkcore.abstractions.7.0.9.nupkg.sha512",
-    "C:\\Users\\81804\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.9\\microsoft.entityframeworkcore.analyzers.7.0.9.nupkg.sha512",
+    "C:\\Users\\81804\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.10\\microsoft.entityframeworkcore.7.0.10.nupkg.sha512",
+    "C:\\Users\\81804\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\7.0.10\\microsoft.entityframeworkcore.abstractions.7.0.10.nupkg.sha512",
+    "C:\\Users\\81804\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\7.0.10\\microsoft.entityframeworkcore.analyzers.7.0.10.nupkg.sha512",
+    "C:\\Users\\81804\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\7.0.10\\microsoft.entityframeworkcore.inmemory.7.0.10.nupkg.sha512",
     "C:\\Users\\81804\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\7.0.0\\microsoft.extensions.caching.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\81804\\.nuget\\packages\\microsoft.extensions.caching.memory\\7.0.0\\microsoft.extensions.caching.memory.7.0.0.nupkg.sha512",
     "C:\\Users\\81804\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\7.0.0\\microsoft.extensions.dependencyinjection.7.0.0.nupkg.sha512",

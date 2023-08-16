@@ -7,7 +7,7 @@ using TESTWebApp.Domain.Models.Shared;
 
 namespace TESTWebApp.Domain.Models.WorkInputs
 {
-    public class WorkInputId : SingleValueObject<string>
+    public sealed class WorkInputId : SingleValueObject<string>
     {
         public WorkInputId(string val) : base(val) { }
 

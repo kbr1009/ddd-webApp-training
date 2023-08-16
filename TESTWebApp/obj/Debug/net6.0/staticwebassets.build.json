@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "E7qTRuatDPx/ISx1Bx61tB7MqXZPKCzB8s2GqxmJqao=",
+  "Hash": "PHyeR//qFsFHNfJbNBi8EcSgCCDCdliqBBeptV1GCC0=",
   "Source": "TESTWebApp",
   "BasePath": "_content/TESTWebApp",
   "Mode": "Default",
@@ -85,6 +85,23 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp\\wwwroot\\js\\home.js",
+      "SourceId": "TESTWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp\\wwwroot\\",
+      "BasePath": "_content/TESTWebApp",
+      "RelativePath": "js/home.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\home.js"
+    },
+    {
       "Identity": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp\\wwwroot\\js\\site.js",
       "SourceId": "TESTWebApp",
       "SourceType": "Discovered",
@@ -100,6 +117,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
+    },
+    {
+      "Identity": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp\\wwwroot\\js\\userLogin.js",
+      "SourceId": "TESTWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp\\wwwroot\\",
+      "BasePath": "_content/TESTWebApp",
+      "RelativePath": "js/userLogin.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\userLogin.js"
     },
     {
       "Identity": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",

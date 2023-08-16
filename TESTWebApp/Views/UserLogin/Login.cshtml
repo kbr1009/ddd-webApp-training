@@ -1,0 +1,49 @@
+﻿@model TESTWebApp.Models.LoginViewModel
+
+@section LogOutBtn{
+    <br />
+}
+@section DispLoginUser{
+    <br />
+}
+
+<div class="chuuou">
+    <div class="container body-content">
+        <form asp-action="ExecuteLogin" method="POST">
+            <input id="UserId" type="hidden" asp-for="LoginId" />
+            <div class="chuuou">
+                <div id="selectUserdiv" class="selectdiv">
+                    <label>
+                        @{
+                            <select class="flash1s" id="selectUser" asp-items="Model.SelectListItems">
+                                <option hidden value="hidden">作業者を選択してください</option>
+                            </select>
+                        }
+                    </label>
+                </div>
+            </div>
+
+            <br />
+
+            <div class="chuuou">
+                <div class="form_conf">
+                    <div class='btn-toolbar' role="toolbar">
+                        <div class="btn-group" role="group">
+                            <div class="d-grid gap-2">
+                                <button id="loginBtn" class="btn customGreenBtn" type="submit">ログインする</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <br />
+        <form asp-action="RedirectToSignUpHandle" method="POST">
+            <div class="chuuou">
+                <button class="btn customBulueBtn" type="submit">新しく作業者を登録する</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="~/js/userLogin.js" asp-append-version="true"></script>
