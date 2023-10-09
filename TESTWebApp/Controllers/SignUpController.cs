@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using TESTWebApp.Models;
 using TESTWebApp.UseCase.Users.Commands.Create;
 
@@ -14,23 +13,21 @@ namespace TESTWebApp.Controllers
             _userCreateCommand = userCreateCommand;
         }
 
-        // GET: SignUpController
         public ActionResult Index()
         {
             SignUpViewModel signUpViewModel = new SignUpViewModel();
             ViewBag.OperationMessage = TempData["OperationMessage"];
+            ViewBag.ErrorMessage = TempData["ErrorMessage"];
             return View("SignUp", signUpViewModel);
         }
 
-        // POST: SignUpController/Create
         [HttpPost]
         public ActionResult ExecuteSiginUp(SignUpViewModel viewModel)
         {
-            if (string.IsNullOrWhiteSpace(viewModel.NewUserName))
+            if (viewModel.NewUserName is null)
             {
-                viewModel.ErrMsg = "登録する作業者名を入力してください。";
-                viewModel.HasErr = true;
-                return View("SignUp", viewModel);
+                TempData["ErrorMessage"] = "登録する作業者名を入力してください。";
+                return RedirectToAction("Index");
             }
 
             try
@@ -40,19 +37,12 @@ namespace TESTWebApp.Controllers
             }
             catch (Exception ex)
             {
-                viewModel.ErrMsg = ex.Message;
-                viewModel.HasErr = true;
-                return View("SignUp", viewModel);
+                TempData["ErrorMessage"] = ex.Message;
+                return RedirectToAction("Index");
             }
 
             TempData["OperationMessage"] = $"{viewModel.NewUserName} の登録が完了しました。";
             return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        public ActionResult RedirectToHomeHandle()
-        {
-            return RedirectToAction("index", "Home");
         }
     }
 }

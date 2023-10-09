@@ -1,0 +1,12 @@
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Domain\bin\Release\net6.0\TESTWebApp.Domain.deps.json
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Domain\bin\Release\net6.0\TESTWebApp.Domain.dll
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Domain\bin\Release\net6.0\TESTWebApp.Domain.pdb
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Domain\obj\Release\net6.0\TESTWebApp.Domain.csproj.AssemblyReference.cache
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Domain\obj\Release\net6.0\TESTWebApp.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Domain\obj\Release\net6.0\TESTWebApp.Domain.AssemblyInfoInputs.cache
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Domain\obj\Release\net6.0\TESTWebApp.Domain.AssemblyInfo.cs
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Domain\obj\Release\net6.0\TESTWebApp.Domain.csproj.CoreCompileInputs.cache
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Domain\obj\Release\net6.0\TESTWebApp.Domain.dll
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Domain\obj\Release\net6.0\refint\TESTWebApp.Domain.dll
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Domain\obj\Release\net6.0\TESTWebApp.Domain.pdb
+C:\Users\81804\source\repos\TESTWebApp\TESTWebApp.Domain\obj\Release\net6.0\ref\TESTWebApp.Domain.dll

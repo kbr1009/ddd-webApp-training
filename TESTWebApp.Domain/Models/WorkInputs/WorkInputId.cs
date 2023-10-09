@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TESTWebApp.Domain.Models.Shared;
+﻿using TESTWebApp.Domain.Models.Shared;
 
 namespace TESTWebApp.Domain.Models.WorkInputs
 {

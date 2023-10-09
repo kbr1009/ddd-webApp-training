@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "PHyeR//qFsFHNfJbNBi8EcSgCCDCdliqBBeptV1GCC0=",
+  "Hash": "/o6yt+aLwnS3lVow+O767/CtirFd5ZVADIGbvT3gy0o=",
   "Source": "TESTWebApp",
   "BasePath": "_content/TESTWebApp",
   "Mode": "Default",
@@ -66,6 +66,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp\\wwwroot\\edit_icon.ico",
+      "SourceId": "TESTWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp\\wwwroot\\",
+      "BasePath": "_content/TESTWebApp",
+      "RelativePath": "edit_icon.ico",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\edit_icon.ico"
     },
     {
       "Identity": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp\\wwwroot\\favicon.ico",
@@ -1103,6 +1120,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp\\wwwroot\\static\\icon.svg",
+      "SourceId": "TESTWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp\\wwwroot\\",
+      "BasePath": "_content/TESTWebApp",
+      "RelativePath": "static/icon.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\static\\icon.svg"
+    },
+    {
+      "Identity": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp\\wwwroot\\static\\yamawa_icon.png",
+      "SourceId": "TESTWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\81804\\source\\repos\\TESTWebApp\\TESTWebApp\\wwwroot\\",
+      "BasePath": "_content/TESTWebApp",
+      "RelativePath": "static/yamawa_icon.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\static\\yamawa_icon.png"
     }
   ]
 }

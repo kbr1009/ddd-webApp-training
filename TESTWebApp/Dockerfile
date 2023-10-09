@@ -1,11 +1,9 @@
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
 
 # 5000ポートで受け付けるように設定する
-##ENV ASPNETCORE_URLS http://+:5000
-#EXPOSE 5000
+EXPOSE 5000
+ENV ASPNETCORE_URLS http://+:5000
 
 # Change timezone to local time
 ENV TZ=Asia/Tokyo
@@ -13,7 +11,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["TESTWebApp/TESTWebApp.csproj", "TESTWebApp/"]
+COPY ["./TESTWebApp/TESTWebApp.csproj", "TESTWebApp/"]
 RUN dotnet restore "TESTWebApp/TESTWebApp.csproj"
 COPY . .
 WORKDIR "/src/TESTWebApp"

@@ -39,11 +39,14 @@
         </form>
 
         <br />
-        <form asp-action="RedirectToSignUpHandle" method="POST">
+@*        <form asp-action="RedirectToSignUpHandle" method="POST">
             <div class="chuuou">
                 <button class="btn customBulueBtn" type="submit">新しく作業者を登録する</button>
             </div>
-        </form>
+        </form>*@
+        <div class="chuuou">
+            <button class="btn customBulueBtn" onclick="location.href='@Url.Action("Index","SignUp")'">新しく作業者を登録する</button>
+        </div>
     </div>
 </div>
 <script src="~/js/userLogin.js" asp-append-version="true"></script>

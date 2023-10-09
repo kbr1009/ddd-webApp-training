@@ -7,9 +7,19 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+//#if DEBUG
+//builder.Services.AddDbContext<AppDbContext>(options =>
+//    options.UseInMemoryDatabase("inMemoryDB"));
+//#else
+// 別のアセンブリにDBContextがある場合のデータマイグレーション
+// https://learn.microsoft.com/en-us/ef/core/managing-schemas/migrations/projects?tabs=dotnet-core-cli
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseInMemoryDatabase("inMemoryDB"));
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DBConnection"),
+        x => x.MigrationsAssembly("TESTWebApp.Infrastructure")));
+//#endif
 
+// 依存性の注入(DI)
 SetUpDependencyInjections.SetUp(builder);
 
 // セッション利用のため以下を追加

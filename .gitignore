@@ -1,2 +1,3 @@
 ./.vs
 ./startApp.sh
+/TESTWebApp/appsettings.json

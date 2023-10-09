@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using TESTWebApp.UseCase.Users.Queries;
 using TESTWebApp.UseCase.WorkInputs.Queries;
+using TESTWebApp.UseCase.MajorWorkItems.Queries;
 
 namespace TESTWebApp.Models
 {
@@ -28,7 +29,7 @@ namespace TESTWebApp.Models
                 if (this.LatestWorkData is null) return null;
                 if (this.LatestWorkData.Status == (int)WorkStatus.Start)
                 {
-                    return $"{this.LatestWorkData.WorkItem}を作業中";
+                    return $"{this.LatestWorkData.MajorWorkItemName}を作業中";
                 }
                 return null;
             }
@@ -53,14 +54,39 @@ namespace TESTWebApp.Models
 
         public IEnumerable<WorkInputDataResponse> WorkInputDatas { get; set; }
 
-        public IEnumerable<SelectListItem> WorkItemList { get; } = new List<SelectListItem>
-        {
-            new SelectListItem { Text = "清掃", Value = "清掃" },
-            new SelectListItem { Text = "売り出し", Value = "売り出し" },
-            new SelectListItem { Text = "えさやり", Value = "えさやり" }
-        };
+        public IEnumerable<MajorWorkItemDataResponse> MajorWorkItems { get; set; } 
+            = new List<MajorWorkItemDataResponse>();
 
-        public string InputWorkItem { get; set; }
+        public IEnumerable<SelectListItem> SelectMajorWorkItems
+        {
+            get
+            {
+                foreach (var i in this.MajorWorkItems)
+                {
+                    yield return new SelectListItem
+                    {
+                        Text = i.MajorWorkItemName,
+                        Value = i.MajorWorkItemId
+                    };
+                }
+            }
+        }
+
+        /// <summary>
+        /// Tmpフォームから送信される大項目ID
+        /// </summary>
+        public string MajorWorkItemId { get; set; }
+
+        /// <summary>
+        /// Tmpフォームから送信される中項目ID
+        /// </summary>
+        public string MiddleWorkItemId { get; set; }
+
+        /// <summary>
+        /// Tmpフォームから送信される小項目ID
+        /// </summary>
+        public string MinorWorkItemId { get; set; }
+
         public WorkStatus? InputWorkStatus { get; set; }
         public WorkStatus? BeforeWorkStatus
         {

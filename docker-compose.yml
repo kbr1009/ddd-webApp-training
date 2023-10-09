@@ -1,14 +1,17 @@
-version: '3'
+version: '3.4'
+
 services:
   nginx:
     build: ./nginx
-    image: 'my_nginx'
-    container_name: 'my_nginx'
+    image: app_nginx
+    container_name: 'app_nginx'
     ports:
     - "80:80"
-  webapp:
-    build: ./TESTWebApp
-    image: 'TESTWebApp'
-    container_name: 'TESTWebApp'
+
+  testwebapp:
+    image: ${DOCKER_REGISTRY-}testwebapp
+    build:
+      context: .
+      dockerfile: ./TESTWebApp/Dockerfile
     ports:
-    - "5000:5000"
+    - 5000:5000

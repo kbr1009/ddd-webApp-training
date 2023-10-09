@@ -1,0 +1,99 @@
+﻿@model TESTWebApp.Models.MinorWorkItemViewModel
+
+@section LogOutBtn{
+    <button type="button" class="btn btn-danger fw-bold" onclick="location.href='@Url.Action("Logout","Home")'">ログアウト</button>
+}
+@section DispLoginUser{
+    <b class="navbar-brand">@Model.LoginUserName さん、こんにちは</b>
+}
+
+<div class="chuuou">
+    <div class="container body-content">
+
+        <br />
+        <div class="chuuou">
+            <h2>@Model.MiddleWorkItemName に関連する作業小項目一覧</h2>
+        </div>
+
+        <br />
+        <div class="chuuou">
+            <button class="btn customGreenSmallBtn" onclick="location.href='@Url.Action("CreateMinorWorkItemPage","MinorWorkItem",
+            new
+            {
+                rootId = Model.MajorWorkItemId,
+                rootName = Model.MajorWorkItemName,
+                Id = Model.MiddleWorkItemId,
+                name = Model.MiddleWorkItemName
+            })'">
+                作業小項目を追加する
+            </button>
+        </div>
+        <br />
+        <div class="chuuou">
+            <button class="btn customBulueBtn" onclick="location.href='@Url.Action("index","MiddleWorkItem",
+            new
+            {
+                Id = Model.MajorWorkItemId,
+                name = Model.MajorWorkItemName
+            })'">
+                戻る
+            </button>
+        </div>
+
+        <br />
+        <div class="chuuou">
+            <table class="table table-sm">
+                <tr>
+                    <th><div class="text-center">項目名</div></th>
+                    <th><div class="text-center">状態</div></th>
+                    <th><div class="text-center"></div></th>
+                </tr>
+                @{
+                    if (Model.MinorWorkItems.Any())
+                    {
+                        @foreach (var i in Model.MinorWorkItems)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="text-center">
+                                        <p class="fw-bold">
+                                            @i.MinorWorkItemName
+                                        </p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-center">
+                                        @if (i.IsDeleted)
+                                        {
+                                            <b class="fw-bold" style="color:#ff0000">使用禁止</b>
+                                        }
+                                        else
+                                        {
+                                            <b class="fw-bold" style="color:#32cd32">使用可能</b>
+                                        }
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-center">
+                                        <button type="button" class="btn" onclick="location.href='@Url.Action("EditMinorWorkItemPage","MinorWorkItem",
+                                        new 
+                                        {
+                                            id = i.MinorWorkItemId,
+                                            majorWorkItemId = Model.MajorWorkItemId,
+                                            majorWorkItemName = Model.MajorWorkItemName,
+                                            middleWorkItemId = Model.MiddleWorkItemId,
+                                            middleWorkitemName = Model.MiddleWorkItemName
+                                        })'">
+                                            <img src="~/edit_icon.ico" width="20" height="20">
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                }
+            </table>
+        </div>
+        <br />
+    </div>
+</div>

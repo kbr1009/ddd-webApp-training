@@ -1,0 +1,234 @@
+﻿@model TESTWebApp.Models.MiddleWorkItem.MiddleWorkItemEditViewModel
+@section LogOutBtn{
+    <button type="button" class="btn btn-danger fw-bold" onclick="location.href='@Url.Action("Logout","Home")'">ログアウト</button>
+}
+@section DispLoginUser{
+    <b class="navbar-brand">@Model.LoginUserName さん、こんにちは</b>
+}
+
+<div class="chuuou">
+    <div class="container body-content">
+        <br />
+        <div class="chuuou">
+            <h2>作業項目（中項目）編集</h2>
+        </div>
+        <br />
+        <div class="chuuou">
+            <h5>@Model.CurrentMiddleWorkItem.MiddleWorkItemName を編集します。</h5>
+        </div>
+
+        @{
+            if (!string.IsNullOrWhiteSpace(ViewBag.ErrorMessage))
+            {
+                <br />
+                <div class="chuuou">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                        </symbol>
+                    </svg>
+                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24"><use xlink:href="#exclamation-triangle-fill" /></svg>
+                        <div>
+                            @ViewBag.ErrorMessage
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        @{
+            if (!string.IsNullOrWhiteSpace(ViewBag.OperationMessage))
+            {
+                <br />
+                <div class="chuuou">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                        </symbol>
+                    </svg>
+                    <div class="alert alert-success d-flex align-items-center" role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24"><use xlink:href="#check-circle-fill" /></svg>
+                        <div>
+                            @ViewBag.OperationMessage
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+
+        <form asp-action="EditMiddleWorkItem" method="POST">
+            <input hidden asp-for="MajorWorkItemId" value="@Model.MajorWorkItemId" />
+            <input hidden asp-for="MajorWorkItemName" value="@Model.MajorWorkItemName" />
+            <input hidden asp-for="EditMiddleWorkItemId" value="@Model.CurrentMiddleWorkItem.MiddleWorkItemId" />
+            <div class="chuuou">
+                <input class="inputForm" id="workItemName" asp-for="NewMiddleWorkItemName" value="@Model.CurrentMiddleWorkItem.MiddleWorkItemName" />
+            </div>
+
+            <br />
+            <br />
+            <div class="chuuou">
+                <div class="form-check form-switch">
+                    @if (Model.CurrentMiddleWorkItem.IsDeleted)
+                    {
+                        <input asp-for="IsDeleted" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" checked="checked">
+                    }
+                    else
+                    {
+
+                        <input asp-for="IsDeleted" class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                    }
+                    <label class="form-check-label" for="flexSwitchCheckDefault"><h5>使用禁止</h5></label>
+                </div>
+            </div>
+
+            <br />
+            <div class="chuuou">
+                <br />
+                <div class="form_conf">
+                    <div class='btn-toolbar' role="toolbar">
+                        <div class="btn-group" role="group">
+                            <div class="d-grid gap-2">
+                                <button id="workBtn" class="btn customGreenBtn" type="submit">変更を保存する</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <br />
+        <div class="chuuou">
+            <button class="btn customSmallRedBtn" type="button" onclick="DelItemEvent()">完全削除する</button>
+        </div>
+        <br />
+        <div class="chuuou">
+            <button class="btn customBulueBtn" onclick="location.href='@Url.Action("index","MiddleWorkItem", new { id = Model.MajorWorkItemId, name = Model.MajorWorkItemName })'">戻る</button>
+        </div>
+
+        <br />
+        <div class="chuuou">
+            <table class="table table-sm">
+                <tr>
+                    <th><div class="text-center">作成者</div></th>
+                    <th><div class="text-center">作成日時</div></th>
+                    <th><div class="text-center">更新者</div></th>
+                    <th><div class="text-center">更新日時</div></th>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="text-center">
+                            <b class="fw-bold">@Model.CurrentMiddleWorkItem.CreatedUserName</b>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-center">
+
+                            <b class="fw-bold">@Model.CurrentMiddleWorkItem.Created.ToString("yyyy/MM/dd HH:mm")</b>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-center">
+                            <b class="fw-bold">@Model.CurrentMiddleWorkItem.ModifiedUserName</b>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-center">
+                            <b class="fw-bold">@Model.CurrentMiddleWorkItem.Modified.ToString("yyyy/MM/dd HH:mm")</b>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- モーダル参考：https://shogo-log.com/modal-javascript/ -->
+        <div id="mask" class="hidden"></div>
+        <section id="modal" class="hidden">
+            <p>削除してよろしいですか？<br>完全削除すると復元できなくなります。</p>
+            <form id="delItemform" asp-action="DeleteMiddleWorkItem" method="POST">
+                <input hidden name="majorWorkItemId" value="@Model.MajorWorkItemId" />
+                <input hidden name="majorWorkItemName" value="@Model.MajorWorkItemName" />
+                <input hidden type="text" name="delWorkItemId" value="@Model.CurrentMiddleWorkItem.MiddleWorkItemId" />
+                <input hidden type="text" name="delWorkItemName" value="@Model.CurrentMiddleWorkItem.MiddleWorkItemName" />
+                <button class="btn btn-outline-primary btn-lg" type="submit">はい</button>
+                <button id="no" type="button" class="btn btn-danger btn-lg">いいえ</button>
+            </form>
+        </section>
+    </div>
+</div>
+<script>
+
+    const close = document.getElementById('no');
+    function DelItemEvent() {
+        var modal = document.getElementById('modal');
+        var mask = document.getElementById('mask');
+        modal.classList.remove('hidden');
+        mask.classList.remove('hidden');
+
+        close.addEventListener('click', function () {
+            modal.classList.add('hidden');
+            mask.classList.add('hidden');
+        });
+    }
+
+</script>
+<style>
+    body {
+        font-size: 16px;
+        height: 1300px;
+    }
+
+    #open,
+    #close {
+        cursor: pointer;
+        width: 200px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        text-align: center;
+        padding: 12px;
+        margin: 16px auto 0;
+        background: #4caf50;
+        color: white;
+        position: relative;
+        top: 30%;
+    }
+
+    #mask {
+        background: rgba(0, 0, 0, 0.4);
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+    #modal {
+        background: #fff;
+        color: #555;
+        width: 300px;
+        padding: 40px;
+        border-radius: 4px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        margin: 0 auto;
+        z-index: 2;
+        transition: 0.4s;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+        #modal p {
+            margin: 0 0 20px;
+        }
+
+    #mask.hidden {
+        display: none;
+    }
+
+    #modal.hidden {
+        display: none;
+    }
+</style>

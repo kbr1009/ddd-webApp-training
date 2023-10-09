@@ -13,9 +13,7 @@
   <ItemGroup>
     <Folder Include="Users\Commands\Update\" />
     <Folder Include="Users\Commands\Delete\" />
-    <Folder Include="WorkItems\Commands\Update\" />
-    <Folder Include="WorkItems\Commands\Delete\" />
-    <Folder Include="WorkItems\Queries\" />
+    <Folder Include="WorkInputs\Commands\StartWork\" />
   </ItemGroup>
 
 </Project>

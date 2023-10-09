@@ -3,6 +3,9 @@ using TESTWebApp.Infrastructure.Database;
 using TESTWebApp.Domain.Models.WorkInputs;
 using TESTWebApp.Domain.Services.WorkInputs;
 using TESTWebApp.Domain.Models.Users;
+using TESTWebApp.Domain.Models.MajorWorkItems;
+using TESTWebApp.Domain.Models.MiddleWorkItems;
+using TESTWebApp.Domain.Models.MinorWorkItems;
 
 namespace TESTWebApp.Infrastructure.Repositories
 {
@@ -31,11 +34,12 @@ namespace TESTWebApp.Infrastructure.Repositories
         {
             return new WorkInput(
                     id: new WorkInputId(dataModel.Id),
-                    userId: new UserId( dataModel.UserId),
-                    workItem: dataModel.WorkItem,
+                    userId: new UserId(dataModel.UserId),
+                    majorWorkItemId: new MajorWorkItemId(dataModel.MajorWorkItemId),
+                    middleWorkItemId: new MiddleWorkItemId(dataModel.MiddleWorkItemId),
+                    minorWorkItemId: new MinorWorkItemId(dataModel.MinorWorkItemId),
                     status: (WorkStatus)dataModel.Status,
-                    timeStamp: dataModel.TimeStamp,
-                    isDeleted: dataModel.IsDeleted);
+                    timeStamp: dataModel.TimeStamp);
         }
 
         private static WORKINPUT ToDataModel(WorkInput workInput)
@@ -44,10 +48,11 @@ namespace TESTWebApp.Infrastructure.Repositories
             {
                 Id = workInput.Id.Value,
                 UserId = workInput.UserId.Value,
-                WorkItem = workInput.WorkItem,
+                MajorWorkItemId = workInput.MajorWorkItemId.Value,
+                MiddleWorkItemId = workInput.MiddleWorkItemId.Value,
+                MinorWorkItemId = workInput.MinorWorkItemId.Value,
                 Status = (int)workInput.Status,
-                TimeStamp = workInput.TimeStamp,
-                IsDeleted = workInput.IsDeleted
+                TimeStamp = workInput.TimeStamp
             };
         }
     }

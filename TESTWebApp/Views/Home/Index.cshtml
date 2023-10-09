@@ -1,14 +1,22 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
-@model TESTWebApp.Models.WorkInputViewModel
+﻿@model TESTWebApp.Models.WorkInputViewModel
 @using TESTWebApp.Domain.Models.WorkInputs;
 
 @section LogOutBtn{
-    <button type="button" class="btn btn-danger font-weight-bold" onclick="location.href='@Url.Action("Logout","Home")'">ログアウト</button>
+    <button type="button" class="btn btn-danger fw-bold" onclick="location.href='@Url.Action("Logout","Home")'">ログアウト</button>
 }
 @section DispLoginUser{
     <b class="navbar-brand">@Model.userData.UserName さん、こんにちは</b>
+}
+@{
+    string majorWorkItemIdByCurrentTask = string.Empty;
+    string middleWorkItemIdByCurrentTask = string.Empty;
+    string minorWorkItemIdCurrentTask = string.Empty;
+    if (Model.LatestWorkData is not null)
+    {
+        majorWorkItemIdByCurrentTask = Model.LatestWorkData.MajorWorkItemId;
+        middleWorkItemIdByCurrentTask = Model.LatestWorkData.MiddleWorkItemId;
+        minorWorkItemIdCurrentTask = Model.LatestWorkData.MinorWorkItemId;
+    }
 }
 
 <div class="chuuou">
@@ -23,30 +31,49 @@
             }
         }
         <br />
-        <form asp-action="ExcecuteWork" method="POST">
-            <input id="workItemName" type="hidden" asp-for="InputWorkItem" />
-            <input id="workStatus" type="hidden" asp-for="InputWorkStatus" value="@Model.BeforeWorkStatus" />
+        <form asp-action="ExcecuteWork" method="POST" onsubmit="return checkNijyuSubmit();">
+            <input hidden id="TmpFormMajorWorkItemId" asp-for="MajorWorkItemId" value="@majorWorkItemIdByCurrentTask"/>
+            <input hidden id="TmpFormMiddleworkItemId" asp-for="MiddleWorkItemId" value="@middleWorkItemIdByCurrentTask"/>
+            <input hidden id="TmpFormMinorworkItemId" asp-for="MinorWorkItemId" value="@minorWorkItemIdCurrentTask" />
+            <input hidden id="workStatus" asp-for="InputWorkStatus" value="@Model.BeforeWorkStatus" />
             <div class="chuuou">
                 <div id="selectWorkdiv" class="selectdiv">
                     <label>
                         @{
                             if (Model.Work)
                             {
-                                <select id="selsectWorkItem" asp-items="Model.WorkItemList">
-                                    <option hidden value="@Model.LatestWorkData.WorkItem">@Model.LatestWorkData.WorkItem</option>
+                                <select id="selsectWorkItem" asp-items="Model.SelectMajorWorkItems">
+                                    <option hidden value="@Model.LatestWorkData.MajorWorkItemId">@Model.LatestWorkData.MajorWorkItemName</option>
                                 </select>
                             }
                             else
                             {
-                                <select class="flash1s" id="selsectWorkItem" asp-items="Model.WorkItemList">
-                                    <option hidden value="hidden">作業項目を入力してください</option>
+                                <select class="flash1s" id="selsectWorkItem" asp-items="Model.SelectMajorWorkItems">
+                                    <option hidden value="hidden">大作業項目(必須選択)</option>
                                 </select>
                             }
                         }
                     </label>
                 </div>
             </div>
-
+            <div class="chuuou">
+                <div id="selectMiddleWorkItemdiv" class="selectdiv">
+                    <br/>
+                    <label>
+                        <select id="selectMiddleWorkItem">
+                        </select>
+                    </label>
+                </div>
+            </div>
+            <div class="chuuou">
+                <div id="selectMinorWorkItemdiv" class="selectdiv">
+                    <br />
+                    <label>
+                        <select id="selectMinorWorkItem">
+                        </select>
+                    </label>
+                </div>
+            </div>
             <br />
             <div class="chuuou">
                 <p id="now" style="font-size:200%; font-weight:bold"></p>
@@ -56,6 +83,26 @@
                 <input type="hidden">
             </div>
 
+            @{
+                if (!string.IsNullOrWhiteSpace(ViewBag.ErrorMessage))
+                {
+                    <br />
+                    <div class="chuuou">
+                        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                            <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                            </symbol>
+                        </svg>
+                        <div class="alert alert-danger d-flex align-items-center" role="alert">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24"><use xlink:href="#exclamation-triangle-fill" /></svg>
+                            <div>
+                                @ViewBag.ErrorMessage
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
              <div class="chuuou">
                 <div class="form_conf">
                     <div class='btn-toolbar' role="toolbar">
@@ -64,17 +111,17 @@
                                 @{
                                     if (Model.LatestWorkData is null)
                                     {
-                                        <button id="workBtn" class="btn customGreenBtn" type="submit" name="CountUp">作業を開始する</button>
+                                        <button id="workBtn" class="btn customGreenBtn" type="submit">作業を開始する</button>
                                     }
                                     else
                                     {
                                         if (Model.LatestWorkData.Status == WorkStatus.Start)
                                         {
-                                            <button id="workBtn" class="btn customRedBtn" type="submit" name="CountUp">作業を終了する</button>
+                                            <button id="workBtn" class="btn customRedBtn" type="submit">作業を終了する</button>
                                         }
                                         if (Model.LatestWorkData.Status == WorkStatus.End)
                                         {
-                                            <button id="workBtn" class="btn customGreenBtn" type="submit" name="CountUp">作業を開始する</button>
+                                            <button id="workBtn" class="btn customGreenBtn" type="submit">作業を開始する</button>
                                         }
                                     }
                                 }
@@ -86,38 +133,108 @@
         </form>
 
         <br />
-        <form asp-action="ExcecuteWork" method="POST">
-            <div class="chuuou">
-                <button class="btn customBulueBtn" type="button">作業項目を追加する</button>
-            </div>
-        </form>
+        <div class="chuuou">
+            <button class="btn customBulueBtn" onclick="location.href='@Url.Action("index","MajorWorkItem")'">作業項目を作成する</button>
+        </div>
 
         <br />
         <div class="chuuou">
             <h3><b>[本日の作業履歴]</b></h3>
         </div>
         <br />
-        @{
-            foreach (var i in Model.WorkInputDatas.Reverse())
-            {
-                if (i.Status == WorkStatus.Start)
-                {
-                    var msg = $"{i.WorkItem}を開始しました {i.TimeStamp.ToString("HH:mm")}";
-                    <div class="chuuou">
-                        <h5><b style="color:#32cd32">● </b><b>@msg</b></h5>
-                    </div>
-                    <br />
+
+        <div class="chuuou">
+            <table class="table table-sm">
+                <tr>
+                    <th><div class="text-center">ステータス</div></th>
+                    <th><div class="text-center">打刻</div></th>
+                    <th><div class="text-center">作業項目大</div></th>
+                    <th><div class="text-center">作業項目中</div></th>
+                    <th><div class="text-center">作業項目小</div></th>
+                </tr>
+                @{
+                    if (Model.WorkInputDatas.Any())
+                    {
+                        long count = 0;
+                        @foreach (var i in Model.WorkInputDatas.Reverse())
+                        {
+                            count++;
+                            string nowStatus = string.Empty;
+                            if(count == 1)
+                            {
+                                nowStatus = "(Now)";
+                            }
+                            <tr>
+                                @if (i.Status == WorkStatus.Start)
+                                {
+                                    <td>
+                                        <div class="text-center">
+                                            <p><b style="color:#32cd32">開始 </b><b class="fw-bold">@nowStatus</b></p>
+                                        </div>
+                                    </td>
+                                }
+                                @if (i.Status == WorkStatus.End)
+                                {
+                                    <td>
+                                        <div class="text-center">
+                                            <p><b style="color:#ff0000">終了 </b><b class="fw-bold">@nowStatus</b></p>
+                                        </div>
+                                    </td>
+                                }
+
+                                <td>
+                                    <div class="text-center">
+                                        <p class="fw-bold">
+                                            @i.TimeStamp.ToString("HH:mm")
+                                        </p>
+                                    </div>
+                                </td>
+
+                                <td>
+                                    <div class="text-center">
+                                        <p class="fw-bold">
+                                            @i.MajorWorkItemName
+                                        </p>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-center">
+                                        @if (!string.IsNullOrEmpty(i.MiddleWorkItemId))
+                                        {
+                                            <p class="fw-bold">
+                                                @i.MiddleWorkItemName
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            <p class="fw-bold">
+                                                -
+                                            </p>
+                                        }
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-center">
+                                        @if (!string.IsNullOrEmpty(i.MinorWorkItemId))
+                                        {
+                                            <p class="fw-bold">
+                                                @i.MinorWorkItemName
+                                            </p>
+                                        }
+                                        else
+                                        {
+                                            <p class="fw-bold">
+                                                -
+                                            </p>
+                                        }
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
                 }
-                if (i.Status == WorkStatus.End)
-                {
-                    var msg = $"{i.WorkItem}を終了しました {i.TimeStamp.ToString("HH:mm")}";
-                    <div class="chuuou">
-                        <h5><b style="color:#ff0000">● </b><b>@msg</b></h5>
-                    </div>
-                }
-            }
-        }
-        <br />
+            </table>
+        </div>
     </div>
 </div>
 

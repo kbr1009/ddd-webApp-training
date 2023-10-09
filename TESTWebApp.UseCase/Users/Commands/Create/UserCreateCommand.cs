@@ -15,10 +15,10 @@ namespace TESTWebApp.UseCase.Users.Commands.Create
         public void Execute(CreateUserRequest request)
         {
             User newUser = User.CreateNew(
-                userName: request.UserName,
+                userName: new UserName(request.UserName),
                 createdBy: new UserId(request.CreatedBy));
 
-            UserService userService = new UserService(_repository);
+            UserService userService = new(_repository);
             if (userService.IsDupulicatedUser(newUser))
                 throw new ArgumentException($"'{request.UserName}' はすでに登録されています。");
 

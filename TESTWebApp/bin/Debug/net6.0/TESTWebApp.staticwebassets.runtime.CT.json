@@ -573,6 +573,28 @@
         "Asset": null,
         "Patterns": null
       },
+      "static": {
+        "Children": {
+          "icon.svg": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 0,
+              "SubPath": "static/icon.svg"
+            },
+            "Patterns": null
+          },
+          "yamawa_icon.png": {
+            "Children": null,
+            "Asset": {
+              "ContentRootIndex": 0,
+              "SubPath": "static/yamawa_icon.png"
+            },
+            "Patterns": null
+          }
+        },
+        "Asset": null,
+        "Patterns": null
+      },
       "TESTWebApp.styles.css": {
         "Children": null,
         "Asset": {

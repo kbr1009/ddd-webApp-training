@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TESTWebApp.Domain.Models.MajorWorkItems;
+using TESTWebApp.Domain.Models.MiddleWorkItems;
+using TESTWebApp.Domain.Models.MinorWorkItems;
 using TESTWebApp.Domain.Models.Users;
 
 namespace TESTWebApp.Domain.Models.WorkInputs
@@ -11,30 +9,35 @@ namespace TESTWebApp.Domain.Models.WorkInputs
     {
         public WorkInputId Id { get; }
         public UserId UserId { get; private set; }
-        public string WorkItem { get; private set; }
+        public MajorWorkItemId MajorWorkItemId { get; private set; }
+        public MiddleWorkItemId MiddleWorkItemId { get; private set; }
+        public MinorWorkItemId MinorWorkItemId { get; private set; }
         public WorkStatus Status { get; private set; }
         public DateTime TimeStamp { get; private set; }
-        public bool IsDeleted { get; private set; } = false;
 
         public WorkInput(
             WorkInputId id,
             UserId userId,
-            string workItem,
+            MajorWorkItemId majorWorkItemId,
+            MiddleWorkItemId middleWorkItemId,
+            MinorWorkItemId minorWorkItemId,
             WorkStatus status,
-            DateTime timeStamp,
-            bool isDeleted)
+            DateTime timeStamp)
         {
             this.Id = id;
             this.UserId = userId;
-            this.WorkItem = workItem;
+            this.MajorWorkItemId = majorWorkItemId;
+            this.MiddleWorkItemId = middleWorkItemId;
+            this.MinorWorkItemId = minorWorkItemId;
             this.Status = status;
             this.TimeStamp = timeStamp;
-            this.IsDeleted = isDeleted;
         }
 
         public static WorkInput CreateNew(
             UserId userId,
-            string workItem,
+            MajorWorkItemId majorWorkItemId,
+            MiddleWorkItemId middleWorkItemId,
+            MinorWorkItemId minorWorkItemId,
             WorkStatus? workStatus
             )
         {
@@ -51,24 +54,18 @@ namespace TESTWebApp.Domain.Models.WorkInputs
                         break;
                 }
             }
+
+            if (string.IsNullOrWhiteSpace(majorWorkItemId.Value))
+                throw new ArgumentException("大作業項目は必須選択項目です。");
+
             return new WorkInput(
                 id: WorkInputId.Generate(),
-                userId: userId ??
-                throw new ArgumentException("error!：ユーザIDが指定されていません。"),
-                workItem: workItem ??
-                throw new ArgumentException("error!：作業項目が指定されていません。"),
+                userId: userId,
+                majorWorkItemId: majorWorkItemId,
+                middleWorkItemId: middleWorkItemId,
+                minorWorkItemId: minorWorkItemId,
                 status: status,
-                timeStamp: DateTime.Now,
-                false);
-        }
-
-        public void DelHistory()
-        {
-            if (this.IsDeleted)
-            {
-                return;
-            }
-            this.IsDeleted = true;
+                timeStamp: DateTime.Now);
         }
     }
 }

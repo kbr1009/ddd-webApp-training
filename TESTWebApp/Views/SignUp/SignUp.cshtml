@@ -11,7 +11,7 @@
     <div class="container body-content">
 
         @{
-            if (Model.HasErr)
+            if (!string.IsNullOrWhiteSpace(ViewBag.ErrorMessage))
             {
                 <br />
                 <div class="chuuou">
@@ -23,7 +23,7 @@
                     <div class="alert alert-danger d-flex align-items-center" role="alert">
                         <svg class="bi flex-shrink-0 me-2" width="24" height="24"><use xlink:href="#exclamation-triangle-fill" /></svg>
                         <div>
-                            @Model.ErrMsg
+                            @ViewBag.ErrorMessage
                         </div>
                     </div>
                 </div>
@@ -69,11 +69,8 @@
             </div>
         </form>
         <br />
-        <form asp-action="RedirectToHomeHandle" method="POST">
-            <div class="chuuou">
-                <button class="btn customBulueBtn" type="submit">ユーザの登録をやめる</button>
-            </div>
-        </form>
-
+        <div class="chuuou">
+            <button class="btn customBulueBtn" onclick="location.href='@Url.Action("Index","UserLogin")'">作業者の登録をやめる</button>
+        </div>
     </div>
 </div>

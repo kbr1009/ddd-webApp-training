@@ -1,21 +1,24 @@
-﻿
+﻿using TESTWebApp.Domain.Models.Shared;
+
 namespace TESTWebApp.Domain.Models.Users
 {
     public sealed class User
     {
         public UserId UserId { get; }
-        public string UserName { get; private set; }
+        public UserName UserName { get; private set; }
         public UserId CreatedBy { get; private set; }
         public UserId ModifiedBy { get; private set; }
+        public WebSessionId WebSessionId { get; private set; }
         public DateTime Created { get; private set; }
         public DateTime Modified { get; private set; }
         public bool IsDeleted { get; private set; } = false;
 
         public User(
             UserId userId, 
-            string UserName, 
+            UserName UserName, 
             UserId createdBy,
             UserId modifiedBy,
+            WebSessionId webSessionId,
             DateTime created, 
             DateTime modified, 
             bool isDeleted) 
@@ -24,29 +27,36 @@ namespace TESTWebApp.Domain.Models.Users
             this.UserName = UserName;
             this.CreatedBy = createdBy;
             this.ModifiedBy = modifiedBy;
+            this.WebSessionId = webSessionId;
             this.Created = created;
             this.Modified = modified;
             this.IsDeleted = isDeleted;
         }
 
-        public static User CreateNew(string userName, UserId createdBy)
+        public static User CreateNew(UserName userName, UserId createdBy)
         {
             var timeStamp = DateTime.Now;
             return new User(
-                userId: UserId.Generate(),
+                userId: new UserId(),
                 UserName: userName, 
                 createdBy: createdBy,
                 modifiedBy: createdBy,
+                webSessionId: new WebSessionId(),
                 created: timeStamp,
                 modified: timeStamp, 
                 isDeleted: false);
         }
 
-        public void UpdateUserName(string userName, UserId modifiedBy)
+        public void UpdateUserName(UserName userName, UserId modifiedBy)
         {
             this.UserName = userName;
             this.ModifiedBy = modifiedBy;
             this.Modified = DateTime.Now;
+        }
+
+        public void UpdateUserLoginSession(WebSessionId webSessionId)
+        {
+            this.WebSessionId = webSessionId;
         }
 
         public void DelUser(UserId modifiedBy)
