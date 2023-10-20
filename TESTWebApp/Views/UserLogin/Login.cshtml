@@ -10,16 +10,11 @@
 <div class="chuuou">
     <div class="container body-content">
         <form asp-action="ExecuteLogin" method="POST">
-            <input id="UserId" type="hidden" asp-for="LoginId" />
+            <input id="UserId" hidden asp-for="LoginId"/>
+
             <div class="chuuou">
-                <div id="selectUserdiv" class="selectdiv">
-                    <label>
-                        @{
-                            <select class="flash1s" id="selectUser" asp-items="Model.SelectListItems">
-                                <option hidden value="hidden">作業者を選択してください</option>
-                            </select>
-                        }
-                    </label>
+                <div id="userSelectBox" class="inputForm flash1s">
+                    <a id ="choiseLoginUserName">作業者を選択してください</a>
                 </div>
             </div>
 
@@ -36,17 +31,106 @@
                     </div>
                 </div>
             </div>
+
         </form>
 
         <br />
-@*        <form asp-action="RedirectToSignUpHandle" method="POST">
-            <div class="chuuou">
-                <button class="btn customBulueBtn" type="submit">新しく作業者を登録する</button>
-            </div>
-        </form>*@
         <div class="chuuou">
             <button class="btn customBulueBtn" onclick="location.href='@Url.Action("Index","SignUp")'">新しく作業者を登録する</button>
+        </div>
+
+        <!-- モーダル参考：https://shogo-log.com/modal-javascript/ -->
+        <div id="mask" class="hidden">
+        </div>
+        <div id="modal" class="hidden">
+            <div>
+                @{
+                    foreach (var i in Model.SelectListItems)
+                    {
+                        <div id="selectLoginUser" onclick="SelectOnClick('@i.Value','@i.Text')">
+                            @i.Text
+                        </div>
+                    }
+                }
+            </div>
+            <div>
+                <button id="no" type="button" class="btn btn-danger btn-lg"><b>閉じる</b></button>
+            </div>
         </div>
     </div>
 </div>
 <script src="~/js/userLogin.js" asp-append-version="true"></script>
+<style>
+
+    #userSelectBox {
+        /*カーソルは指印*/
+        cursor: pointer;
+        /*縦棒のカーソルの色を白にした*/
+        caret-color: #fff;
+    }
+
+    #selectLoginUser {
+        cursor: pointer;
+        padding: 10px;
+        margin: 15px;
+        border-radius: 5px;
+        max-width: auto;
+        min-width: auto;
+        background: #fffacd;
+        display: block;
+        font-weight: bold;
+        transition: 0s;
+    }
+
+        #selectLoginUser:hover {
+            background: #ffff00;
+        }
+
+    #mask {
+        background: rgba(0, 0, 0, 0.4);
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+    #modal {
+        background: #fff;
+        color: #555;
+        min-width: 320px;
+        padding: 20px;
+        border-radius: 5px;
+/*        border: 2px solid #000000;*/
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        margin: 0 auto;
+        z-index: 2;
+        transition: 0.4s;
+        font-size: 30px;
+        font-weight: bold;
+        text-align:center;
+    }
+
+        #modal p {
+            margin: 0 0 20px;
+        }
+
+        #modal li {
+            list-style: none;
+        }
+
+    #mask.hidden {
+        display: none;
+    }
+
+    #modal.hidden {
+        display: none;
+    }
+
+</style>

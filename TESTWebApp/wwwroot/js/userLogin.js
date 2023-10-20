@@ -1,20 +1,50 @@
-﻿// ユーザログイン画面
+﻿/*
+ ユーザログイン画面.js
+*/
+
+//ユーザIDpostdata
+const postDataEl = document.getElementById("UserId");
+
+// ログインボタン
+const loginButtonEl = document.getElementById("loginBtn");
+
+// ユーザ情報選択
+// ＊テキストボックスだが、クリックするとモーダルが表示されユーザ情報を選ぶことができる
+const userSelectBox = document.getElementById("userSelectBox");
+//  ユーザ選択の表示用aタグ
+const choiseLoginUserName = document.getElementById("choiseLoginUserName");
+
+
 window.onload = function () {
-    const dropDownList = document.getElementById("selectUser");
-    const button = document.getElementById("loginBtn");
-    const text = dropDownList.value;
-    if (text == "hidden") {
-        button.disabled = "disabled";
-    } else {
-        button.disabled = null;
-        document.getElementById("UserId").value = text;
-    }
+    // ログインボタンは非活性にする
+    loginButtonEl.disabled = "disabled";
 }
 
-// ユーザログイン画面
-const selectUserName = document.getElementById("selectUser");
-selectUserName.onchange = event => {
-    const loginButton = document.getElementById("loginBtn");
-    loginButton.disabled = null;
-    document.getElementById("UserId").value = selectUserName.value;
+
+// セレクトボックスがクリックされたらユーザを選択させるモーダルを表示させる
+userSelectBox.onclick = event => {
+    SelectUserEvent();
+}
+
+// ユーザが選択されたら
+function SelectOnClick(id, dipData) {
+    postDataEl.value = id;
+    choiseLoginUserName.textContent = dipData;
+    loginButtonEl.disabled = null;
+    modal.classList.add('hidden');
+    mask.classList.add('hidden');
+}
+
+
+const close = document.getElementById('no');
+function SelectUserEvent() {
+    var modal = document.getElementById('modal');
+    var mask = document.getElementById('mask');
+    modal.classList.remove('hidden');
+    mask.classList.remove('hidden');
+
+    close.addEventListener('click', function () {
+        modal.classList.add('hidden');
+        mask.classList.add('hidden');
+    });
 }

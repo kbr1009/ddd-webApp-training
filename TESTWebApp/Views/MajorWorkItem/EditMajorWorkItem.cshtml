@@ -140,7 +140,8 @@
         </div>
 
         <!-- モーダル参考：https://shogo-log.com/modal-javascript/ -->
-        <div id="mask" class="hidden"></div>
+        <div id="mask" class="hidden">
+        </div>
         <section id="modal" class="hidden">
             <p>削除してよろしいですか？<br>完全削除すると復元できなくなります。</p>
             <form id="delItemform" asp-action="DeleteMajorWorkItem" method="POST">
@@ -152,7 +153,6 @@
         </section>
     </div>
 </div>
-<script src="~/js/majorWorkItem.js" asp-append-version="true"></script>
 <script>
 
     const close = document.getElementById('no');

@@ -21,22 +21,30 @@
 
 <div class="chuuou">
     <div class="container body-content">
+        <!--時間表示-->
+        <div class="chuuou">
+            <p id="now" style="font-size:200%; font-weight:bold"></p>
+        </div>
+
+        <!--ステータス表示-->
         @{
             if (Model.Work)
             {
-                <br />
                 <div class="chuuou">
                     <h3 style="font-size:200%;"><b class="flash3s" style="color:#32cd32">● </b><b>@Model.WodrkStatusMsg</b></h3>
                 </div>
             }
         }
-        <br />
+
         <form asp-action="ExcecuteWork" method="POST" onsubmit="return checkNijyuSubmit();">
-            <input hidden id="TmpFormMajorWorkItemId" asp-for="MajorWorkItemId" value="@majorWorkItemIdByCurrentTask"/>
+            <!--PostData-->
+            <input hidden  id="TmpFormMajorWorkItemId" asp-for="MajorWorkItemId" value="@majorWorkItemIdByCurrentTask"/>
             <input hidden id="TmpFormMiddleworkItemId" asp-for="MiddleWorkItemId" value="@middleWorkItemIdByCurrentTask"/>
             <input hidden id="TmpFormMinorworkItemId" asp-for="MinorWorkItemId" value="@minorWorkItemIdCurrentTask" />
             <input hidden id="workStatus" asp-for="InputWorkStatus" value="@Model.BeforeWorkStatus" />
-            <div class="chuuou">
+
+            <!--作業項目大　選択-->
+@*            <div class="chuuou">
                 <div id="selectWorkdiv" class="selectdiv">
                     <label>
                         @{
@@ -55,7 +63,43 @@
                         }
                     </label>
                 </div>
-            </div>
+            </div>*@
+
+            @{
+                if (!Model.Work)
+                {
+                    <div class="chuuou">
+                        <!--大項目選択　改修版-->
+                        <div id="majorItemSelectBox" class="itemSelectForm inputForm">
+                            <a id="choiseMajorItemName">大作業項目を選択</a>
+                        </div>
+                    </div>
+
+                    <!-- モーダル(大項目選択)-->
+                    <div id="maskMajroItemSelect" class="selectModalMask hidden">
+                    </div>
+                    <div id="modalMajorItemSelet" class="selectModal hidden">
+                        <h2><b>作業項目大</b></h2>
+                        <div id="majorItemSelectList" class="selectList">
+                            @{
+                                foreach (var i in Model.SelectMajorWorkItems)
+                                {
+                                    <div id="selectMajorItem" class="selectItem" onclick="SelectedMajorWorkItem('@i.Value','@i.Text')">
+                                        @i.Text
+                                    </div>
+                                }
+                            }
+                        </div>
+                        <div>
+                            <button id="no" type="button" class="btn btn-danger btn-lg"><b>閉じる</b></button>
+                        </div>
+                    </div>
+                }
+            }
+
+
+            <!--作業項目中　選択-->
+            <!--
             <div class="chuuou">
                 <div id="selectMiddleWorkItemdiv" class="selectdiv">
                     <br/>
@@ -65,6 +109,29 @@
                     </label>
                 </div>
             </div>
+            -->
+            <div class="in"></div>
+
+            <!--中作業項目 改修版-->
+            <div class="chuuou spaceTop">
+                <div id="middleItemSelectBox" class="itemSelectForm inputForm">
+                    <a id="choiseMiddleItemName">中業項目を選択</a>
+                </div>
+            </div>
+            <!-- モーダル(中項目選択)-->
+            <div id="maskMiddleItemSelect" class="selectModalMask hidden">
+            </div>
+            <div id="modalMiddleItemSelet" class="selectModal hidden">
+                <h2><b>作業項目中</b></h2>
+                <div id="middleItemSelectList" class="selectList">
+                </div>
+                <div>
+                    <button id="closeMiddleItemSelectBoxBtn" type="button" class="btn btn-danger btn-lg"><b>閉じる</b></button>
+                </div>
+            </div>
+
+            <!--作業項目小　選択-->
+            <!--
             <div class="chuuou">
                 <div id="selectMinorWorkItemdiv" class="selectdiv">
                     <br />
@@ -74,13 +141,23 @@
                     </label>
                 </div>
             </div>
-            <br />
-            <div class="chuuou">
-                <p id="now" style="font-size:200%; font-weight:bold"></p>
+            -->
+            <!--小作業項目　改修版-->
+            <div class="chuuou spaceTop">
+                <div id="minorItemSelectBox" class="itemSelectForm inputForm">
+                    <a id="choiseMinorItemName">小業項目を選択</a>
+                </div>
             </div>
-            <br />
-            <div>
-                <input type="hidden">
+            <!-- モーダル(小項目選択)-->
+            <div id="maskMinorItemSelect" class="selectModalMask hidden">
+            </div>
+            <div id="modalMinorItemSelet" class="selectModal hidden">
+                <h2><b>作業項目小</b></h2>
+                <div id="minorItemSelectList" class="selectList">
+                </div>
+                <div>
+                    <button id="closeMinorItemSelectBoxBtn" type="button" class="btn btn-danger btn-lg"><b>閉じる</b></button>
+                </div>
             </div>
 
             @{
@@ -102,7 +179,7 @@
                     </div>
                 }
             }
-
+            <br id="workBtnSpace" />
              <div class="chuuou">
                 <div class="form_conf">
                     <div class='btn-toolbar' role="toolbar">
@@ -147,7 +224,7 @@
             <table class="table table-sm">
                 <tr>
                     <th><div class="text-center">ステータス</div></th>
-                    <th><div class="text-center">打刻</div></th>
+                    <th><div class="text-center">時間</div></th>
                     <th><div class="text-center">作業項目大</div></th>
                     <th><div class="text-center">作業項目中</div></th>
                     <th><div class="text-center">作業項目小</div></th>
@@ -237,5 +314,98 @@
         </div>
     </div>
 </div>
-
 <script src="~/js/home.js" asp-append-version="true"></script>
+<style>
+    .selectList{
+        height: 420px;
+        overflow: auto;
+    }
+
+    .itemSelectForm {
+        /*カーソルは指印*/
+        cursor: pointer;
+        /*縦棒のカーソルの色を白にした*/
+        caret-color: #fff;
+    }
+
+    .selectItem {
+        cursor: pointer;
+        padding: 10px;
+        margin: 15px;
+        border-radius: 5px;
+        max-width: auto;
+        min-width: auto;
+        background: #fffacd;
+        display: block;
+        font-weight: bold;
+        overflow-wrap: break-word;
+        transition: 0s;
+    }
+        .selectItem:hover {
+            background: #ffff00;
+        }
+
+
+    .selectModalMask {
+        background: rgba(0, 0, 0, 0.4);
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: 1;
+    }
+
+        .selectModalMask.hidden {
+            display: none;
+        }
+
+    .selectModal {
+        background: #fff;
+        color: #555;
+        width: 320px;
+        height: 550px;
+        padding: 20px;
+        border-radius: 5px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        margin: 0 auto;
+        z-index: 2;
+        transition: 0.4s;
+        font-size: 30px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+        .selectModal p {
+            margin: 0 0 20px;
+        }
+
+        .selectModal li {
+            list-style: none;
+        }
+
+        .selectModal.hidden{
+            display: none;
+        }
+
+
+    .spaceTop {
+        padding-top: 10px;
+    }
+
+    .spaceBottom{
+        padding-bottom: 20px;
+    }
+
+    .wBSpace{
+        display: none;
+    }
+
+
+
+</style>
