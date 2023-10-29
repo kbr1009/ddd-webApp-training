@@ -10,8 +10,6 @@ namespace TESTWebApp.Infrastructure.Database
         public DbSet<MINORWORKITEM> MinorWorkItemModels { get; set; }
         public DbSet<WORKINPUT> WorkInputDataModels { get; set; }
         public DbSet<USER> UserDataModels { get; set; }
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
-        {
-        }
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
     }
 }

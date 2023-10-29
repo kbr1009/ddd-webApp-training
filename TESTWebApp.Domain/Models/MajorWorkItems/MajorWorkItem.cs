@@ -4,14 +4,6 @@ namespace TESTWebApp.Domain.Models.MajorWorkItems
 {
     public sealed class MajorWorkItem
     {
-        public MajorWorkItemId WorkItemId { get; }
-        public WorkItemName MajorWorkItemName { get; private set; }
-        public UserId CreatedBy { get; private set; }
-        public UserId ModifiedBy { get; private set; }
-        public DateTime Created { get; private set; }
-        public DateTime Modified { get; private set; }
-        public bool IsDeleted { get; private set; } = false;
-
         public MajorWorkItem(
             MajorWorkItemId workItemId,
             WorkItemName majorWorkItemName,
@@ -29,6 +21,14 @@ namespace TESTWebApp.Domain.Models.MajorWorkItems
             this.Modified = modified;
             this.IsDeleted = isDeleted;
         }
+
+        public MajorWorkItemId WorkItemId { get; }
+        public WorkItemName MajorWorkItemName { get; private set; }
+        public UserId CreatedBy { get; private set; }
+        public UserId ModifiedBy { get; private set; }
+        public DateTime Created { get; private set; }
+        public DateTime Modified { get; private set; }
+        public bool IsDeleted { get; private set; } = false;
 
         public static MajorWorkItem CreateNew(WorkItemName majorWorkItemName, UserId createdBy)
         {

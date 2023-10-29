@@ -6,16 +6,6 @@ namespace TESTWebApp.Domain.Models.MinorWorkItems
 {
     public sealed class MinorWorkItem
     {
-        public MinorWorkItemId MinorWorkItemId { get; }
-        public WorkItemName MinorWorkItemName { get; private set; }
-        public MajorWorkItemId MajorWorkItemId { get; private set; }
-        public MiddleWorkItemId MiddleWorkItemId { get; private set; }
-        public UserId CreatedBy { get; private set; }
-        public UserId ModifiedBy { get; private set; }
-        public DateTime Created { get; private set; }
-        public DateTime Modified { get; private set; }
-        public bool IsDeleted { get; private set; } = false;
-
         public MinorWorkItem(
             MinorWorkItemId minorWorkItemId,
             WorkItemName minorWorkItemName,
@@ -37,6 +27,16 @@ namespace TESTWebApp.Domain.Models.MinorWorkItems
             this.Modified = modified;
             this.IsDeleted = isDeleted;
         }
+
+        public MinorWorkItemId MinorWorkItemId { get; }
+        public WorkItemName MinorWorkItemName { get; private set; }
+        public MajorWorkItemId MajorWorkItemId { get; private set; }
+        public MiddleWorkItemId MiddleWorkItemId { get; private set; }
+        public UserId CreatedBy { get; private set; }
+        public UserId ModifiedBy { get; private set; }
+        public DateTime Created { get; private set; }
+        public DateTime Modified { get; private set; }
+        public bool IsDeleted { get; private set; } = false;
 
         public static MinorWorkItem CreateNew(
             WorkItemName minorWorkItemName, 

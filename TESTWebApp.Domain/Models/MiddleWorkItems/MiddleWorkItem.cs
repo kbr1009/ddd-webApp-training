@@ -5,15 +5,6 @@ namespace TESTWebApp.Domain.Models.MiddleWorkItems
 {
     public sealed class MiddleWorkItem
     {
-        public MiddleWorkItemId MiddleWorkItemId { get; }
-        public WorkItemName MiddleWorkItemName { get; private set; }
-        public MajorWorkItemId MajorWorkItemId { get; private set; }
-        public UserId CreatedBy { get; private set; }
-        public UserId ModifiedBy { get; private set; }
-        public DateTime Created { get; private set; }
-        public DateTime Modified { get; private set; }
-        public bool IsDeleted { get; private set; } = false;
-
         public MiddleWorkItem(
             MiddleWorkItemId middleWorkItemId,
             MajorWorkItemId majorWorkItemId,
@@ -33,6 +24,15 @@ namespace TESTWebApp.Domain.Models.MiddleWorkItems
             this.Modified = modified;
             this.IsDeleted = isDeleted;
         }
+
+        public MiddleWorkItemId MiddleWorkItemId { get; }
+        public WorkItemName MiddleWorkItemName { get; private set; }
+        public MajorWorkItemId MajorWorkItemId { get; private set; }
+        public UserId CreatedBy { get; private set; }
+        public UserId ModifiedBy { get; private set; }
+        public DateTime Created { get; private set; }
+        public DateTime Modified { get; private set; }
+        public bool IsDeleted { get; private set; } = false;
 
         public static MiddleWorkItem CreateNew(
             WorkItemName middleWorkItemName,MajorWorkItemId foreignKey, UserId createdBy)

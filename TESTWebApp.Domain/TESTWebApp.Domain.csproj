@@ -1,9 +1,24 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="MajorWorkItems\Model\" />
+    <Folder Include="MajorWorkItems\Service\" />
+    <Folder Include="MiddleWorkItems\Model\" />
+    <Folder Include="MiddleWorkItems\Service\" />
+    <Folder Include="MinorWorkItems\Model\" />
+    <Folder Include="MinorWorkItems\Service\" />
+    <Folder Include="Shared\Model\" />
+    <Folder Include="Shared\Service\" />
+    <Folder Include="Users\Model\" />
+    <Folder Include="Users\Service\" />
+    <Folder Include="WorkInputs\Model\" />
+    <Folder Include="WorkInputs\Service\" />
+  </ItemGroup>
 
 </Project>

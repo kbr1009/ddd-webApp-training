@@ -70,13 +70,13 @@ select::-ms-expand {
     min-height: 70px;
     height: auto;
     width: 350px;
-    padding:12px;
+    padding: 12px;
     font-size: 27px;
     color: #333;
     background-color: #ffffff;
     background-image: none;
     border: 2px solid #000000;
-    border-radius: 5px;
+    border-radius: 10px;
     -ms-word-break: normal;
     word-break: normal;
     font-weight: bold;
@@ -91,6 +91,8 @@ select::-ms-expand {
     font-weight: bold;
     border-color: #32cd32;
     background: #32cd32;
+
+    border-radius: 10px;
 }
 
     .customGreenBtn:hover {
@@ -105,6 +107,8 @@ select::-ms-expand {
     font-weight: bold;
     border-color: #32cd32;
     background: #32cd32;
+
+    border-radius: 10px;
 }
 
     .customGreenSmallBtn:hover {
@@ -119,6 +123,8 @@ select::-ms-expand {
     font-weight: bold;
     border-color: #ff0000;
     background: #ff0000;
+
+    border-radius: 10px;
 }
 
     .customRedBtn:hover {
@@ -133,6 +139,8 @@ select::-ms-expand {
     font-weight: bold;
     border-color: #ff0000;
     background: #ff0000;
+
+    border-radius: 10px;
 }
 
     .customRedBtn:hover {
@@ -146,8 +154,12 @@ select::-ms-expand {
     height: 2em;
     font-size: 180%;
     font-weight: bold;
-    border-color: #0000FF;
-    background: #0000FF;
+    /*    border-color: #0000FF;
+    background: #0000FF;*/
+    border-color: #0000cd;
+    background: #0000cd;
+
+    border-radius: 10px;
 }
 
     .customBulueBtn:hover {
@@ -183,6 +195,11 @@ input[type=checkbox] {
 .form-check-input[type='checkbox']:checked {
     background-color: red;
     border-color: red;
+}
+
+
+.styleBorderRadius {
+    border-radius: 10px;
 }
 
 

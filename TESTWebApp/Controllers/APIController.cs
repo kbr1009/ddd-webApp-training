@@ -3,6 +3,8 @@ using TESTWebApp.UseCase.MajorWorkItems.Queries;
 using TESTWebApp.UseCase.MiddleWorkItems.Queries;
 using TESTWebApp.UseCase.MinorWorkItems.Queries;
 
+// 参考：https://learn.microsoft.com/ja-jp/aspnet/core/mvc/controllers/routing?view=aspnetcore-7.0
+
 namespace TESTWebApp.Controllers
 {
     public class APIController : Controller
@@ -39,6 +41,14 @@ namespace TESTWebApp.Controllers
         public ActionResult GetMinorWorkItems(string id)
         {
             var responseData = _minorWorkItemQueryService.GetAllMinorWorkItem(id);
+            return Json(responseData);
+        }
+
+        [HttpGet]
+        [Route("api/majorWorkItems")]
+        public ActionResult GetAllMajorWorkItemsV2()
+        {
+            var responseData = _majorWorkItemQueryService.GetAllMajorWorkItem();
             return Json(responseData);
         }
     }

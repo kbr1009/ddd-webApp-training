@@ -42,7 +42,7 @@
         <!-- モーダル参考：https://shogo-log.com/modal-javascript/ -->
         <div id="mask" class="hidden">
         </div>
-        <div id="modal" class="hidden">
+        <div id="modal" class="hidden styleBorderRadius">
             <div>
                 @{
                     foreach (var i in Model.SelectListItems)
@@ -54,7 +54,7 @@
                 }
             </div>
             <div>
-                <button id="no" type="button" class="btn btn-danger btn-lg"><b>閉じる</b></button>
+                <button id="no" type="button" class="btn btn-danger btn-lg styleBorderRadius"><b>閉じる</b></button>
             </div>
         </div>
     </div>
@@ -73,7 +73,7 @@
         cursor: pointer;
         padding: 10px;
         margin: 15px;
-        border-radius: 5px;
+        border-radius: 10px;
         max-width: auto;
         min-width: auto;
         background: #fffacd;
@@ -101,7 +101,7 @@
         color: #555;
         min-width: 320px;
         padding: 20px;
-        border-radius: 5px;
+        border-radius: 10px;
 /*        border: 2px solid #000000;*/
         position: fixed;
         top: 50%;

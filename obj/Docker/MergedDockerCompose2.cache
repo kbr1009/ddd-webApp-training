@@ -34,7 +34,7 @@ services:
     image: testwebapp:dev
     labels:
       com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
-        --additionalProbingPath /root/.nuget/fallbackpackages  "/app/bin/Debug/net6.0/TESTWebApp.dll"'
+        --additionalProbingPath /root/.nuget/fallbackpackages  "/app/bin/Release/net6.0/TESTWebApp.dll"'
       com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
         dotnet); then kill $$PID; fi"
       com.microsoft.visualstudio.debuggee.program: dotnet
